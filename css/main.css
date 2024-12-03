@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #d8dbe6;
+  background-color: #f2f2f2;
 }
 #landing {
   display: flex;
@@ -94,11 +94,11 @@ body {
 }
 
 #reset {
-  width: 80px;
+  width: 84px;
   height: 40px;
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: 16px;
+  top: 16px;
   margin: 0 auto;
   text-transform: uppercase;
   background: #9686bc;
@@ -111,6 +111,28 @@ body {
 }
 
 #reset:hover {
+  background-color: #6f6092;
+  transition-duration: 0.3s;
+}
+
+#select-difficulty {
+  width: 84px;
+  height: 40px;
+  position: absolute;
+  left: 16px;
+  top: 64px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  background: #9686bc;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+#select-difficulty:hover {
   background-color: #6f6092;
   transition-duration: 0.3s;
 }
@@ -153,6 +175,11 @@ body {
   background-color: #3a424f;
   transform: scale(1.05);
   transition-duration: 0.3s;
+}
+
+.btn:disabled {
+  color: #7e7e7e;
+  background-color: #c4c4c4;
 }
 
 .select-difficulty {

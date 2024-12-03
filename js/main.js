@@ -142,7 +142,7 @@ function gameOver() {
 }
 
 function selectWordDifficulty() {
-//   const levelBtn = event.target;
-//   wordDifficulty = event.target.dataset.difficulty;
+  //   const levelBtn = event.target;
+  //   wordDifficulty = event.target.dataset.difficulty;
   document.getElementById('landing').style.display = 'none';
 }
