@@ -54,7 +54,7 @@ let gameMessage = '';
 
 /*----- cached elements  -----*/
 const imgEl = document.getElementById('spaceman-img');
-const btnEls = [...document.getElementsByClassName('ltr-button')];
+const btnEls = [...document.getElementsByClassName('btn')];
 const messageEl = document.getElementById('game-message');
 let wordDisplayEl = document.getElementById('word-display');
 
@@ -68,11 +68,11 @@ document.getElementById('reset').addEventListener('click', init);
 init();
 
 function init() {
-  wordDisplayEl = 'Start';
-  hiddenWord = getRandomWord;
+  gameMessage = 'Start!';
+  hiddenWord = getRandomWord();
   displayWord = Array(hiddenWord.length).fill('_');
   guesses = [];
-  correctGuesses = [];
+  correctGuesses = hiddenWord.split('');
   incorrectGuesses = [];
   btnEls.forEach((btn) => {
     btn.disabled = false;
@@ -83,11 +83,12 @@ function init() {
 
 function render() {
   imgEl.src = `images/spaceman-${curFrame}.png`; // spaceman pic
-  // reset the state of all buttons
+  wordDisplayEl.textContent = displayWord.join('');
+  messageEl.textContent = gameMessage;
   btnEls.forEach(function (btn) {
-    btn.disabled = false;
+    const ltr = btn.textContent.toLowerCase();
+    btn.disabled = guesses.includes(ltr);
   });
-  btnEls[curFrame].disabled = true;
 }
 
 // get random word for answer
@@ -99,25 +100,31 @@ function getRandomWord() {
 function getRandomWordSplit() {
   const randomWord = getRandomWord();
   const splitWord = randomWord.split('');
-  return splitWord;
+  correctGuesses.push(splitWord);
 }
 
 function handleBtnClick(event) {
   const btn = event.target;
-  if (!btnEls.includes(btn)) return;
-  curFrame = parseInt(btn.textContent);
-  const guesses = btnEls.textContent;
-  if (!btnEls.includes(btn)) {
-    return guesses.push(splitWord);
-  } else {
-    return incorrectGuesses.push(guesses);
+  if (!btn.classList.contains('btn')) return; // ensure that a button was clicked
+
+  const ltrGuess = btn.textContent.toLowerCase();
+  if (!guesses.includes(ltrGuess)) {
+    guesses.push(ltrGuess);
+    console.log('Guesses before push', guesses); // add a guessed letter
   }
+
+  if (correctGuesses.includes(ltrGuess)) {
+    gameMessage = 'Correct';
+    correctGuesses.forEach((ltr, idx) => {
+      if (ltr === ltrGuess) displayWord[idx] = ltr;
+    });
+  } else {
+    gameMessage = 'Incorrect';
+    incorrectGuesses.push(ltrGuess);
+    curFrame++;
+  }
+  render();
 }
 
 function gameOver() {
-  if (curFrame > 6) {
-    message = 'Game Over';
-  } else if ((guesses = correctGuesses)) {
-    messge = 'Good luck';
-  }
 }
