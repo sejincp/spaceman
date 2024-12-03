@@ -27,13 +27,13 @@ const ltrs = [
   'y',
   'z',
 ];
-const words = ['star', 'wave', 'moon'];
+// const words = ['star', 'wave', 'moon'];
 
-// const words = {
-//   easy: ['star', 'wave', 'moon'],
-//   medium: ['journey', 'pyramid', 'mystery', 'station'],
-//   hard: ['laboratory', 'electricity', 'astronauts', 'microscope'],
-// };
+const words = {
+  easy: ['star', 'wave', 'moon'],
+  medium: ['journey', 'pyramid', 'mystery', 'station'],
+  hard: ['laboratory', 'electricity', 'astronauts', 'microscope'],
+};
 
 // const maxGuesses = {
 //   easy: 7,
@@ -49,6 +49,7 @@ let correctGuesses = [];
 let incorrectGuesses = [];
 let curFrame = 0;
 let gameMessage = '';
+let wordDifficulty = 'easy';
 // let maxGuesses;
 // let timer;
 
@@ -63,12 +64,15 @@ document
   .getElementById('ltr-buttons')
   .addEventListener('click', handleBtnClick);
 document.getElementById('reset').addEventListener('click', init);
+// document
+//   .getElementsByClassName('level-btn')
+//   .addEventListener('click', selectWordDifficulty);
 
 /*----- functions -----*/
 init();
 
 function init() {
-  gameMessage = 'Start!';
+  gameMessage = 'START!';
   hiddenWord = getRandomWord();
   displayWord = Array(hiddenWord.length).fill('_');
   guesses = [];
@@ -93,7 +97,8 @@ function render() {
 
 // get random word for answer
 function getRandomWord() {
-  return words[Math.floor(Math.random() * words.length)];
+  const wordList = words[wordDifficulty];
+  return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
 // get the random word split
@@ -105,21 +110,23 @@ function getRandomWordSplit() {
 
 function handleBtnClick(event) {
   const btn = event.target;
-  if (!btn.classList.contains('btn')) return; // ensure that a button was clicked
+  // ensure that a button was clicked
+  if (!btn.classList.contains('btn')) return;
 
   const ltrGuess = btn.textContent.toLowerCase();
   if (!guesses.includes(ltrGuess)) {
+    // add a guessed letter
     guesses.push(ltrGuess);
-    console.log('Guesses before push', guesses); // add a guessed letter
+    console.log('Guesses before push', guesses);
   }
 
   if (correctGuesses.includes(ltrGuess)) {
-    gameMessage = 'Correct';
+    gameMessage = 'Correct 👍';
     correctGuesses.forEach((ltr, idx) => {
       if (ltr === ltrGuess) displayWord[idx] = ltr;
     });
   } else {
-    gameMessage = 'Incorrect';
+    gameMessage = 'Try other one 🤔';
     incorrectGuesses.push(ltrGuess);
     curFrame++;
   }
@@ -127,4 +134,15 @@ function handleBtnClick(event) {
 }
 
 function gameOver() {
+  if (curFrame > 6) {
+    gameMessage = 'Game Over 😔';
+  } else if ((guesses = correctGuesses)) {
+    gameMessage = 'You Win 😎';
+  }
+}
+
+function selectWordDifficulty() {
+//   const levelBtn = event.target;
+//   wordDifficulty = event.target.dataset.difficulty;
+  document.getElementById('landing').style.display = 'none';
 }

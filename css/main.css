@@ -1,9 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 * {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #d8dbe6;
+}
+#landing {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f2f2f2;
+  position: fixed;
+  z-index: 999;
 }
 
 #title {
@@ -13,16 +28,22 @@
 
 #container-game {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  z-index: 0;
 }
 
 #game-display {
   display: flex;
   align-items: center;
   width: 80vw;
-  height: 500px;
+  height: 550px;
   margin: 12px auto 0 auto;
-  background-color: #eef1f4;
+  background-color: #e3e7eb;
   position: relative;
 }
 
@@ -41,7 +62,7 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 80px;
+  top: 112px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -59,8 +80,9 @@
   bottom: 200px;
   margin: 0 auto;
   text-transform: uppercase;
+  letter-spacing: 5px;
   background: white;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 #ltr-buttons {
@@ -68,7 +90,7 @@
   padding: 24px 0;
   margin: 0 auto;
   position: absolute;
-  bottom: 0;
+  bottom: 8px;
 }
 
 #reset {
@@ -130,5 +152,48 @@
 .btn:hover {
   background-color: #3a424f;
   transform: scale(1.05);
+  transition-duration: 0.3s;
+}
+
+.select-difficulty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.level-message {
+  margin: 20px 0 16px 0;
+}
+.level-btn {
+  height: 40px;
+  width: 120px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background: #545f71;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.level-btn.easy {
+  color: #fff;
+  background: #addc96;
+}
+
+.level-btn.medium {
+  color: #fff;
+  background: #91d2d9;
+}
+
+.level-btn.hard {
+  color: #fff;
+  background: #e29c9c;
+}
+
+.level-btn:hover {
+  filter: brightness(0.9);
   transition-duration: 0.3s;
 }

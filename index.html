@@ -8,15 +8,29 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="title">
+    <div id="landing">
       <img
-        class="logo"
+        class="landing-logo"
         src="./images/spaceman-logo.png"
         alt="Spaceman-logo"
-        width="300px"
+        width="400px"
       />
+      <div class="select-difficulty">
+        <p class="level-message">SELECT DIFFICULTY</p>
+        <button id="level-easy" class="level-btn easy" onclick="selectWordDifficulty()";>EASY</button>
+        <button id="level-medium" class="level-btn medium" onclick="selectWordDifficulty()";>MEDIUM</button>
+        <button id="level-hard" class="level-btn hard" onclick="selectWordDifficulty()";>HARD</button>
+      </div>
     </div>
     <section id="container-game">
+      <div id="title">
+        <img
+          class="logo"
+          src="./images/spaceman-logo.png"
+          alt="Spaceman-logo"
+          width="300px"
+        />
+      </div>
       <div class="container" id="game-display">
         <div id="container-menu">
           <p id="game-message">Message</p>
