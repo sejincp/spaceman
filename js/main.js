@@ -36,11 +36,12 @@ const words = {
 
 // sounds
 const bgmSound = new Audio('./assets/sounds/starlight-204347.mp3');
-const btnSound = new Audio('');
-const correctSound = new Audio('');
-const incorrectSound = new Audio('');
-const gameWinSound = new Audio('');
-const gameLoseSound = new Audio('');
+const startSound = new Audio('./assets/sounds/start.wav');
+const btnSound = new Audio('./assets/sounds/click.wav');
+const correctSound = new Audio('./assets/sounds/correct.wav');
+const incorrectSound = new Audio('./assets/sounds/incorrect.wav');
+const gameWinSound = new Audio('./assets/sounds/win.wav');
+const gameLoseSound = new Audio('./assets/sounds/lose.wav');
 
 // const maxGuesses = {
 //   easy: 7,
@@ -57,12 +58,13 @@ let incorrectGuesses = [];
 let curFrame = 0;
 let gameMessage = '';
 let wordDifficulty = 'easy';
+let gameOver = false;
 // let maxGuesses;
 // let timer;
 
 /*---------- cached elements  ----------*/
 const imgEl = document.getElementById('spaceman-img');
-const btnEls = [...document.getElementsByClassName('btn')];
+const btnEls = [...document.querySelectorAll('#ltr-buttons .btn')];
 const messageEl = document.getElementById('game-message');
 let wordDisplayEl = document.getElementById('word-display');
 let soundImg = document.querySelector('#bgm');
@@ -109,6 +111,13 @@ function render() {
   });
 }
 
+function disableAllbtns() {
+  btnEls.forEach((btn) => {
+    btn.disabled = true;
+    btn.classList.add('disabled');
+  });
+}
+
 function getRandomWord() {
   const wordList = words[wordDifficulty];
   return wordList[Math.floor(Math.random() * wordList.length)];
@@ -136,19 +145,27 @@ function handleBtnClick(event) {
     correctGuesses.forEach((ltr, idx) => {
       if (ltr === ltrGuess) displayWord[idx] = ltr;
     });
+    correctSound.volume = 0.5;
+    correctSound.play();
   } else {
-    gameMessage = 'Try other one 🤔';
+    gameMessage = 'Try another one 🤔';
     btn.classList.add('incorrect-guess');
     incorrectGuesses.push(ltrGuess);
+    incorrectSound.volume = 0.5;
+    incorrectSound.play();
     curFrame++;
   }
 
   if (curFrame > 5) {
     messageEl.style.color = 'red';
     gameMessage = 'Game Over 😔';
+    gameLoseSound.volume = 0.5;
+    gameLoseSound.play();
   } else if (displayWord.join('') === hiddenWord) {
     messageEl.style.color = 'blue';
     gameMessage = 'You Win 😎';
+    gameWinSound.volume = 0.5;
+    gameWinSound.play();
   }
   render();
 }
@@ -157,6 +174,8 @@ function selectWordDifficulty(event) {
   if (!event.target.classList.contains('level-btn')) return;
   wordDifficulty = event.target.getAttribute('data-difficulty');
   document.getElementById('landing').style.display = 'none';
+  startSound.volume = 0.5;
+  startSound.play();
   init();
 }
 
@@ -170,11 +189,11 @@ function soundControl() {
   if (!bgmSound.paused) {
     bgmSound.pause();
     soundImg.classList = 'bgm-off';
-    soundImg.src = "./assets/images/ico-volume-off.png"
+    soundImg.src = './assets/images/ico-volume-off.png';
   } else {
     bgmSound.loop = true;
     bgmSound.play();
     soundImg.classList = 'bgm-on';
-    soundImg.src = "./assets/images/ico-volume-on.png"
+    soundImg.src = './assets/images/ico-volume-on.png';
   }
 }
