@@ -11,22 +11,43 @@
     <div id="landing">
       <img
         class="landing-logo"
-        src="./images/spaceman-logo.png"
+        src="./assets/images/spaceman-logo.png"
         alt="Spaceman-logo"
         width="400px"
       />
       <div class="select-difficulty">
         <p class="level-message">SELECT DIFFICULTY</p>
-        <button id="level-easy" class="level-btn easy" onclick="selectWordDifficulty()";>EASY</button>
-        <button id="level-medium" class="level-btn medium" onclick="selectWordDifficulty()";>MEDIUM</button>
-        <button id="level-hard" class="level-btn hard" onclick="selectWordDifficulty()";>HARD</button>
+        <button
+          id="level-easy"
+          class="level-btn easy"
+          data-difficulty="easy"
+          ;
+        >
+          EASY
+        </button>
+        <button
+          id="level-medium"
+          class="level-btn medium"
+          data-difficulty="medium"
+          ;
+        >
+          MEDIUM
+        </button>
+        <button
+          id="level-hard"
+          class="level-btn hard"
+          data-difficulty="hard"
+          ;
+        >
+          HARD
+        </button>
       </div>
     </div>
     <section id="container-game">
       <div id="title">
         <img
           class="logo"
-          src="./images/spaceman-logo.png"
+          src="./assets/images/spaceman-logo.png"
           alt="Spaceman-logo"
           width="300px"
         />
@@ -38,7 +59,11 @@
           <button id="select-difficulty">Select Difficulty</button>
         </div>
         <div id="container-img">
-          <img id="spaceman-img" src="./images/spaceman-0.png" width="120px" />
+          <img
+            id="spaceman-img"
+            src="./assets/images/spaceman-0.png"
+            width="120px"
+          />
         </div>
         <div id="answer-display">
           <p id="word-display">Message</p>

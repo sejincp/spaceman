@@ -23,7 +23,7 @@ body {
 
 #title {
   width: 300px;
-  margin: 40px auto 12px auto;
+  margin: 40px auto 8px auto;
 }
 
 #container-game {
@@ -48,7 +48,7 @@ body {
 }
 
 #game-message {
-  color: red;
+  color: rgb(70, 70, 70);
   position: absolute;
   top: 30px;
   left: 0;
@@ -180,6 +180,11 @@ body {
 .btn:disabled {
   color: #7e7e7e;
   background-color: #c4c4c4;
+}
+
+.btn.correct-guess {
+  color: #ffffff;
+  background-color: #8cd991;
 }
 
 .select-difficulty {

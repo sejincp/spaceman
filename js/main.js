@@ -27,13 +27,20 @@ const ltrs = [
   'y',
   'z',
 ];
-// const words = ['star', 'wave', 'moon'];
 
 const words = {
   easy: ['star', 'wave', 'moon'],
   medium: ['journey', 'pyramid', 'mystery', 'station'],
   hard: ['laboratory', 'electricity', 'astronauts', 'microscope'],
 };
+
+// sounds
+const bgm = new Audio('../assets/sounds/starlight-204347.mp3');
+const btnSound = new Audio('');
+const correctSound = new Audio('');
+const incorrectSound = new Audio('');
+const gameWinSound = new Audio('');
+const gameLoseSound = new Audio('');
 
 // const maxGuesses = {
 //   easy: 7,
@@ -64,14 +71,18 @@ document
   .getElementById('ltr-buttons')
   .addEventListener('click', handleBtnClick);
 document.getElementById('reset').addEventListener('click', init);
-// document
-//   .getElementsByClassName('level-btn')
-//   .addEventListener('click', selectWordDifficulty);
+document
+  .getElementById('select-difficulty')
+  .addEventListener('click', refreshPage);
+document
+  .querySelectorAll('.level-btn')
+  .forEach((btn) => btn.addEventListener('click', selectWordDifficulty));
 
 /*----- functions -----*/
 init();
 
 function init() {
+  messageEl.style.color = '#333';
   gameMessage = 'START!';
   hiddenWord = getRandomWord();
   displayWord = Array(hiddenWord.length).fill('_');
@@ -79,6 +90,7 @@ function init() {
   correctGuesses = hiddenWord.split('');
   incorrectGuesses = [];
   btnEls.forEach((btn) => {
+    btn.classList = "btn";
     btn.disabled = false;
   });
   curFrame = 0;
@@ -86,7 +98,7 @@ function init() {
 }
 
 function render() {
-  imgEl.src = `images/spaceman-${curFrame}.png`; // spaceman pic
+  imgEl.src = `assets/images/spaceman-${curFrame}.png`; // spaceman pic
   wordDisplayEl.textContent = displayWord.join('');
   messageEl.textContent = gameMessage;
   btnEls.forEach(function (btn) {
@@ -95,13 +107,11 @@ function render() {
   });
 }
 
-// get random word for answer
 function getRandomWord() {
   const wordList = words[wordDifficulty];
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
-// get the random word split
 function getRandomWordSplit() {
   const randomWord = getRandomWord();
   const splitWord = randomWord.split('');
@@ -110,18 +120,17 @@ function getRandomWordSplit() {
 
 function handleBtnClick(event) {
   const btn = event.target;
-  // ensure that a button was clicked
   if (!btn.classList.contains('btn')) return;
 
   const ltrGuess = btn.textContent.toLowerCase();
   if (!guesses.includes(ltrGuess)) {
-    // add a guessed letter
     guesses.push(ltrGuess);
     console.log('Guesses before push', guesses);
   }
 
   if (correctGuesses.includes(ltrGuess)) {
     gameMessage = 'Correct 👍';
+    btn.classList.add('correct-guess');
     correctGuesses.forEach((ltr, idx) => {
       if (ltr === ltrGuess) displayWord[idx] = ltr;
     });
@@ -130,19 +139,24 @@ function handleBtnClick(event) {
     incorrectGuesses.push(ltrGuess);
     curFrame++;
   }
+
+  if (curFrame > 5) {
+    messageEl.style.color = 'red';
+    gameMessage = 'Game Over 😔';
+  } else if (displayWord.join('') === hiddenWord) {
+    messageEl.style.color = 'blue';
+    gameMessage = 'You Win 😎';
+  }
   render();
 }
 
-function gameOver() {
-  if (curFrame > 6) {
-    gameMessage = 'Game Over 😔';
-  } else if ((guesses = correctGuesses)) {
-    gameMessage = 'You Win 😎';
-  }
+function selectWordDifficulty(event) {
+  if (!event.target.classList.contains('level-btn')) return;
+  wordDifficulty = event.target.getAttribute('data-difficulty');
+  document.getElementById('landing').style.display = 'none';
+  init();
 }
 
-function selectWordDifficulty() {
-  //   const levelBtn = event.target;
-  //   wordDifficulty = event.target.dataset.difficulty;
-  document.getElementById('landing').style.display = 'none';
+function refreshPage() {
+  location.reload();
 }
