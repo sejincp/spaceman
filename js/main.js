@@ -1,4 +1,4 @@
-/*----- constants -----*/
+/*---------- constants ----------*/
 const ltrs = [
   'a',
   'b',
@@ -29,13 +29,13 @@ const ltrs = [
 ];
 
 const words = {
-  easy: ['star', 'wave', 'moon'],
+  easy: ['star', 'wave', 'moon', 'mars'],
   medium: ['journey', 'pyramid', 'mystery', 'station'],
   hard: ['laboratory', 'electricity', 'astronauts', 'microscope'],
 };
 
 // sounds
-const bgm = new Audio('../assets/sounds/starlight-204347.mp3');
+const bgmSound = new Audio('./assets/sounds/starlight-204347.mp3');
 const btnSound = new Audio('');
 const correctSound = new Audio('');
 const incorrectSound = new Audio('');
@@ -60,13 +60,14 @@ let wordDifficulty = 'easy';
 // let maxGuesses;
 // let timer;
 
-/*----- cached elements  -----*/
+/*---------- cached elements  ----------*/
 const imgEl = document.getElementById('spaceman-img');
 const btnEls = [...document.getElementsByClassName('btn')];
 const messageEl = document.getElementById('game-message');
 let wordDisplayEl = document.getElementById('word-display');
+let soundImg = document.querySelector('#bgm');
 
-/*----- event listeners -----*/
+/*---------- event listeners ----------*/
 document
   .getElementById('ltr-buttons')
   .addEventListener('click', handleBtnClick);
@@ -77,8 +78,9 @@ document
 document
   .querySelectorAll('.level-btn')
   .forEach((btn) => btn.addEventListener('click', selectWordDifficulty));
+soundImg.addEventListener('click', soundControl);
 
-/*----- functions -----*/
+/*---------- functions ----------*/
 init();
 
 function init() {
@@ -90,7 +92,7 @@ function init() {
   correctGuesses = hiddenWord.split('');
   incorrectGuesses = [];
   btnEls.forEach((btn) => {
-    btn.classList = "btn";
+    btn.classList = 'btn';
     btn.disabled = false;
   });
   curFrame = 0;
@@ -136,6 +138,7 @@ function handleBtnClick(event) {
     });
   } else {
     gameMessage = 'Try other one 🤔';
+    btn.classList.add('incorrect-guess');
     incorrectGuesses.push(ltrGuess);
     curFrame++;
   }
@@ -159,4 +162,19 @@ function selectWordDifficulty(event) {
 
 function refreshPage() {
   location.reload();
+  bgmSound.loop = true;
+  bgmSound.play();
+}
+
+function soundControl() {
+  if (!bgmSound.paused) {
+    bgmSound.pause();
+    soundImg.classList = 'bgm-off';
+    soundImg.src = "./assets/images/ico-volume-off.png"
+  } else {
+    bgmSound.loop = true;
+    bgmSound.play();
+    soundImg.classList = 'bgm-on';
+    soundImg.src = "./assets/images/ico-volume-on.png"
+  }
 }

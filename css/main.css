@@ -36,6 +36,18 @@ body {
   left: 0;
   z-index: 0;
 }
+@media screen and (max-width: 375px) {
+  #container-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 4vh;
+    left: 0;
+    z-index: 0;
+  }
+}
 
 #game-display {
   display: flex;
@@ -45,6 +57,18 @@ body {
   margin: 12px auto 0 auto;
   background-color: #e3e7eb;
   position: relative;
+}
+
+@media screen and (max-width: 375px) {
+  #game-display {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 550px;
+    margin: 0 auto 3rem auto;
+    background-color: #e3e7eb;
+    position: relative;
+  }
 }
 
 #game-message {
@@ -91,6 +115,7 @@ body {
   margin: 0 auto;
   position: absolute;
   bottom: 8px;
+  width: 90%;
 }
 
 #reset {
@@ -137,6 +162,23 @@ body {
   transition-duration: 0.3s;
 }
 
+#bgm {
+  width: 28px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+
+/* #bgm-on {
+  width: 28px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+} */
+
+
 .logo {
   width: 100%;
 }
@@ -156,7 +198,6 @@ body {
   display: flex;
   justify-content: center;
 }
-/* responsive design for mobile - 375px */
 
 .btn {
   height: 40px;
@@ -169,6 +210,19 @@ body {
   text-align: center;
   font-size: 1rem;
   cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  .btn {
+    padding: 0.1rem;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background: #545f71;
+    text-align: center;
+    font-size: 1rem;
+  }
 }
 
 .btn:hover {
@@ -185,6 +239,16 @@ body {
 .btn.correct-guess {
   color: #ffffff;
   background-color: #8cd991;
+}
+
+.btn.incorrect-guess {
+  color: #7e7e7e;
+  background-color: #c4c4c4;
+}
+
+.btn.incorrect-guess:active {
+  color: #7e7e7e;
+  background-color: #e19090;
 }
 
 .select-difficulty {
