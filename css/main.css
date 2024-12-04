@@ -9,6 +9,67 @@
 body {
   background-color: #f2f2f2;
 }
+
+ul {
+  list-style: none;
+}
+
+/* Nav */
+nav {
+  width: 100vw;
+  height: 2.8rem;
+  position: fixed;
+  top: 0;
+  display: grid;
+  align-items: center;
+  background-color: #e3e7eb;
+  border-bottom: 1px solid #333;
+  z-index: 999;
+}
+.nav-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  height: 2.8rem;
+}
+
+.nav-btn {
+  height: 2.8rem;
+  font-size: 0.2rem;
+  padding: 0 0.8rem;
+  margin: 0 auto;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: #5f6368;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-right: 1px solid #333;
+}
+
+.nav-btn:hover {
+  text-decoration: underline;
+  transition-duration: 0.3s;
+}
+
+#home-menu {
+  cursor: pointer;
+}
+#sound {
+  width: 24px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Landing page */
 #landing {
   display: flex;
   align-items: center;
@@ -18,7 +79,12 @@ body {
   height: 100vh;
   background-color: #e3e7eb;
   position: fixed;
-  z-index: 990;
+  z-index: 998;
+}
+
+/* Game display */
+.logo {
+  width: 100%;
 }
 
 #title {
@@ -92,6 +158,20 @@ body {
   margin: 0 auto;
 }
 
+#reset {
+  height: 1.6rem;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: #5f6368;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 #answer-display {
   width: 200px;
   height: 40px;
@@ -109,6 +189,7 @@ body {
   border-radius: 0;
 }
 
+/* Buttons */
 #ltr-buttons {
   box-sizing: border-box;
   padding: 24px 0;
@@ -116,63 +197,6 @@ body {
   position: absolute;
   bottom: 8px;
   width: 90%;
-}
-
-#reset {
-  width: 84px;
-  height: 40px;
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  margin: 0 auto;
-  text-transform: uppercase;
-  background: #9686bc;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 8px;
-}
-
-#reset:hover {
-  background-color: #6f6092;
-  transition-duration: 0.3s;
-}
-
-#select-difficulty {
-  width: 84px;
-  height: 40px;
-  position: absolute;
-  left: 16px;
-  top: 64px;
-  margin: 0 auto;
-  text-transform: uppercase;
-  background: #9686bc;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border-radius: 8px;
-}
-
-#select-difficulty:hover {
-  background-color: #6f6092;
-  transition-duration: 0.3s;
-}
-
-#bgm {
-  width: 28px;
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-.logo {
-  width: 100%;
 }
 
 #container-menu {

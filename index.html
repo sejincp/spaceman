@@ -8,6 +8,29 @@
     <title>SPACEMAN</title>
   </head>
   <body>
+    <nav>
+      <div class="nav-center">
+        <img
+          id="home-menu"
+          src="./assets/images/spaceman-logo-mini.png"
+          alt="Spacemam logo mini"
+          style="width: 24px; display: block; margin: 0 12px"
+        />
+        <ul class="nav-links">
+          <li>
+            <button id="how-to-play" class="nav-btn">How to play</button>
+          </li>
+          <li>
+            <img
+              id="sound"
+              class="sound-off"
+              style="display: block; margin: 0 12px"
+              src="assets/images/ico-volume-off.png"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
     <section id="landing-game">
       <div id="landing">
         <img
@@ -50,27 +73,22 @@
         <img
           class="logo"
           src="./assets/images/spaceman-logo.png"
-          alt="Spaceman-logo"
+          alt="Spaceman Logo"
           width="300px"
         />
       </div>
       <div class="container" id="game-display">
         <div id="container-menu">
           <p id="game-message">Message</p>
-          <button id="reset">RESET</button>
-          <button id="select-difficulty">Select Difficulty</button>
-          <img
-            id="bgm"
-            class="bgm-off"
-            src="assets/images/ico-volume-off.png"
-          />
         </div>
         <div id="container-img">
           <img
             id="spaceman-img"
             src="./assets/images/spaceman-0.png"
+            alt="Spaceman image"
             width="120px"
           />
+          <img id="reset" src="./assets/images/ico-reset.png" alt="Reset button"/>
         </div>
         <div id="answer-display">
           <p id="word-display">Message</p>

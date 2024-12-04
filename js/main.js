@@ -67,7 +67,7 @@ const imgEl = document.getElementById('spaceman-img');
 const btnEls = [...document.querySelectorAll('#ltr-buttons .btn')];
 const messageEl = document.getElementById('game-message');
 let wordDisplayEl = document.getElementById('word-display');
-let soundImg = document.querySelector('#bgm');
+let soundImg = document.querySelector('#sound');
 
 /*---------- event listeners ----------*/
 document
@@ -75,7 +75,7 @@ document
   .addEventListener('click', handleBtnClick);
 document.getElementById('reset').addEventListener('click', init);
 document
-  .getElementById('select-difficulty')
+  .getElementById('home-menu')
   .addEventListener('click', refreshPage);
 document
   .querySelectorAll('.level-btn')
@@ -86,6 +86,7 @@ soundImg.addEventListener('click', soundControl);
 init();
 
 function init() {
+  gameOver = false;
   messageEl.style.color = '#333';
   gameMessage = 'START!';
   hiddenWord = getRandomWord();
@@ -105,17 +106,16 @@ function render() {
   imgEl.src = `assets/images/spaceman-${curFrame}.png`; // spaceman pic
   wordDisplayEl.textContent = displayWord.join('');
   messageEl.textContent = gameMessage;
-  btnEls.forEach(function (btn) {
+  btnEls.forEach((btn) => {
     const ltr = btn.textContent.toLowerCase();
     btn.disabled = guesses.includes(ltr);
   });
-}
-
-function disableAllbtns() {
-  btnEls.forEach((btn) => {
-    btn.disabled = true;
-    btn.classList.add('disabled');
-  });
+  if (gameOver) {
+    btnEls.forEach((btn) => {
+      btn.disabled = true;
+      btn.classList.add('disabled');
+    });
+  }
 }
 
 function getRandomWord() {
@@ -157,11 +157,13 @@ function handleBtnClick(event) {
   }
 
   if (curFrame > 5) {
+    gameOver = true;
     messageEl.style.color = 'red';
     gameMessage = 'Game Over 😔';
     gameLoseSound.volume = 0.5;
     gameLoseSound.play();
   } else if (displayWord.join('') === hiddenWord) {
+    gameOver = true;
     messageEl.style.color = 'blue';
     gameMessage = 'You Win 😎';
     gameWinSound.volume = 0.5;
@@ -188,12 +190,12 @@ function refreshPage() {
 function soundControl() {
   if (!bgmSound.paused) {
     bgmSound.pause();
-    soundImg.classList = 'bgm-off';
+    soundImg.classList = 'sound-off';
     soundImg.src = './assets/images/ico-volume-off.png';
   } else {
     bgmSound.loop = true;
     bgmSound.play();
-    soundImg.classList = 'bgm-on';
+    soundImg.classList = 'sound-on';
     soundImg.src = './assets/images/ico-volume-on.png';
   }
 }
