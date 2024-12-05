@@ -8,126 +8,164 @@
     <title>SPACEMAN</title>
   </head>
   <body>
-    <nav>
-      <div class="nav-center">
-        <img
-          id="home-menu"
-          src="./assets/images/spaceman-logo-mini.png"
-          alt="Spacemam logo mini"
-          style="width: 24px; display: block; margin: 0 12px"
-        />
-        <ul class="nav-links">
-          <li>
-            <button id="how-to-play" class="nav-btn">How to play</button>
-          </li>
-          <li>
-            <img
-              id="sound"
-              class="sound-off"
-              style="display: block; margin: 0 12px"
-              src="assets/images/ico-volume-off.png"
-            />
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <section id="landing-game">
-      <div id="landing">
-        <img
-          class="landing-logo"
-          src="./assets/images/spaceman-logo.png"
-          alt="Spaceman-logo"
-          width="400px"
-        />
-        <div class="select-difficulty">
-          <p class="level-message">SELECT DIFFICULTY</p>
-          <button
-            id="level-easy"
-            class="level-btn easy"
-            data-difficulty="easy"
-            ;
-          >
-            EASY
-          </button>
-          <button
-            id="level-medium"
-            class="level-btn medium"
-            data-difficulty="medium"
-            ;
-          >
-            MEDIUM
-          </button>
-          <button
-            id="level-hard"
-            class="level-btn hard"
-            data-difficulty="hard"
-            ;
-          >
-            HARD
-          </button>
-        </div>
-      </div>
-    </section>
-    <section id="container-game">
-      <div id="title">
-        <img
-          class="logo"
-          src="./assets/images/spaceman-logo.png"
-          alt="Spaceman Logo"
-          width="300px"
-        />
-      </div>
-      <div class="container" id="game-display">
-        <div id="container-menu">
-          <p id="game-message">Message</p>
-        </div>
-        <div id="container-img">
+    <div id="root">
+      <nav>
+        <div class="nav-center">
           <img
-            id="spaceman-img"
-            src="./assets/images/spaceman-0.png"
-            alt="Spaceman image"
-            width="120px"
+            id="home-menu"
+            src="./assets/images/spaceman-logo-mini.png"
+            alt="Spacemam logo mini"
+            style="width: 24px; display: block; margin: 0 12px"
           />
-          <img id="reset" src="./assets/images/ico-reset.png" alt="Reset button"/>
+          <ul class="nav-links">
+            <li>
+              <button id="how-to-play-btn" class="nav-btn">How to play</button>
+            </li>
+            <li>
+              <img
+                id="sound"
+                class="sound-off"
+                style="display: block; margin: 0 12px"
+                src="assets/images/ico-volume-off.png"
+              />
+            </li>
+          </ul>
         </div>
-        <div id="answer-display">
-          <p id="word-display">Message</p>
+      </nav>
+      <section id="landing-game">
+        <div id="landing">
+          <img
+            class="landing-logo"
+            src="./assets/images/spaceman-logo.png"
+            alt="Spaceman-logo"
+            width="300px"
+          />
+          <div class="select-difficulty">
+            <p class="level-message">SELECT DIFFICULTY</p>
+            <button
+              id="level-easy"
+              class="level-btn easy"
+              data-difficulty="easy"
+              ;
+            >
+              EASY
+            </button>
+            <button
+              id="level-medium"
+              class="level-btn medium"
+              data-difficulty="medium"
+              ;
+            >
+              MEDIUM
+            </button>
+            <button
+              id="level-hard"
+              class="level-btn hard"
+              data-difficulty="hard"
+              ;
+            >
+              HARD
+            </button>
+          </div>
         </div>
-        <div class="container" id="ltr-buttons">
-          <div class="ltr-row" id="row0">
-            <button class="ltr btn" id="r0i0">A</button>
-            <button class="ltr btn" id="r0i1">B</button>
-            <button class="ltr btn" id="r0i2">C</button>
-            <button class="ltr btn" id="r0i3">D</button>
-            <button class="ltr btn" id="r0i4">E</button>
-            <button class="ltr btn" id="r0i5">F</button>
-            <button class="ltr btn" id="r0i6">G</button>
-            <button class="ltr btn" id="r0i7">H</button>
-            <button class="ltr btn" id="r0i8">I</button>
-            <button class="ltr btn" id="r0i9">J</button>
-          </div>
-          <div class="ltr-row" id="row1">
-            <button class="ltr btn" id="r1i0">K</button>
-            <button class="ltr btn" id="r1i1">L</button>
-            <button class="ltr btn" id="r1i2">M</button>
-            <button class="ltr btn" id="r1i3">N</button>
-            <button class="ltr btn" id="r1i4">O</button>
-            <button class="ltr btn" id="r1i5">P</button>
-            <button class="ltr btn" id="r1i6">Q</button>
-            <button class="ltr btn" id="r1i7">R</button>
-            <button class="ltr btn" id="r1i8">S</button>
-          </div>
-          <div class="ltr-row" id="row2">
-            <button class="ltr btn" id="r2i0">T</button>
-            <button class="ltr btn" id="r2i1">U</button>
-            <button class="ltr btn" id="r2i2">V</button>
-            <button class="ltr btn" id="r2i3">W</button>
-            <button class="ltr btn" id="r2i4">X</button>
-            <button class="ltr btn" id="r2i5">Y</button>
-            <button class="ltr btn" id="r2i6">Z</button>
+      </section>
+      <section id="how-to-play-game">
+        <div id="how-to">
+          <img
+            class="how-to-logo"
+            src="./assets/images/spaceman-logo.png"
+            alt="Spaceman-logo"
+            width="300px"
+          />
+          <div id="how-to-desc">
+            <p class="level-message">
+              A secret word is chosen, and blanks () are shown for each letter.
+              Example: " _ _ _" for "STAR." You have a limited number of wrong
+              guesses (e.g., 6). Guess Letters: Take turns guessing one letter
+              at a time. If correct, fill in the blanks. If wrong, you lose a
+              guess. Win or Lose: Win: Guess all letters before running out of
+              guesses. Lose: Run out of guesses before completing the word.
+              Theme: Words are space-related. Good luck, astronaut! 🚀
+            </p>
+            <button id="how-to-close">LET'S PLAY</button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section id="container-game">
+        <div id="title">
+          <img
+            class="logo"
+            src="./assets/images/spaceman-logo.png"
+            alt="Spaceman Logo"
+            width="300px"
+          />
+        </div>
+        <div class="container" id="game-display">
+          <div id="container-menu">
+            <p id="game-message">Message</p>
+          </div>
+          <div id="container-img">
+            <img
+              id="spaceman-img"
+              src="./assets/images/spaceman-0.png"
+              alt="Spaceman image"
+              width="120px"
+            />
+            <button id="reset">
+              <img
+                src="./assets/images/ico-reset.png"
+                alt="Reset button"
+                width="24px;"
+              />
+            </button>
+            <button id="try-again">
+              <img
+                src="./assets/images/btn-try-again.png"
+                alt="Try again"
+                width="48px;"
+              />
+            </button>
+          </div>
+          <div id="answer-display">
+            <p id="sub-display">Sub Message</p>
+            <p id="word-display">Message</p>
+          </div>
+          <div class="container" id="ltr-buttons">
+            <div class="ltr-row" id="row0">
+              <button class="ltr btn" id="r0i0">A</button>
+              <button class="ltr btn" id="r0i1">B</button>
+              <button class="ltr btn" id="r0i2">C</button>
+              <button class="ltr btn" id="r0i3">D</button>
+              <button class="ltr btn" id="r0i4">E</button>
+              <button class="ltr btn" id="r0i5">F</button>
+              <button class="ltr btn" id="r0i6">G</button>
+              <button class="ltr btn" id="r0i7">H</button>
+              <button class="ltr btn" id="r0i8">I</button>
+              <button class="ltr btn" id="r0i9">J</button>
+            </div>
+            <div class="ltr-row" id="row1">
+              <button class="ltr btn" id="r1i0">K</button>
+              <button class="ltr btn" id="r1i1">L</button>
+              <button class="ltr btn" id="r1i2">M</button>
+              <button class="ltr btn" id="r1i3">N</button>
+              <button class="ltr btn" id="r1i4">O</button>
+              <button class="ltr btn" id="r1i5">P</button>
+              <button class="ltr btn" id="r1i6">Q</button>
+              <button class="ltr btn" id="r1i7">R</button>
+              <button class="ltr btn" id="r1i8">S</button>
+            </div>
+            <div class="ltr-row" id="row2">
+              <button class="ltr btn" id="r2i0">T</button>
+              <button class="ltr btn" id="r2i1">U</button>
+              <button class="ltr btn" id="r2i2">V</button>
+              <button class="ltr btn" id="r2i3">W</button>
+              <button class="ltr btn" id="r2i4">X</button>
+              <button class="ltr btn" id="r2i5">Y</button>
+              <button class="ltr btn" id="r2i6">Z</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

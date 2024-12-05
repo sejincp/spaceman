@@ -43,15 +43,9 @@ const incorrectSound = new Audio('./assets/sounds/incorrect.wav');
 const gameWinSound = new Audio('./assets/sounds/win.wav');
 const gameLoseSound = new Audio('./assets/sounds/lose.wav');
 
-// const maxGuesses = {
-//   easy: 7,
-//   medium: 6,
-//   hard: 4
-// };
-
 /*----- state variables -----*/
 let hiddenWord = []; // words to guess
-let displayWord = []; // _ _ _ _
+let displayWord = []; // _
 let guesses = [];
 let correctGuesses = [];
 let incorrectGuesses = [];
@@ -59,14 +53,15 @@ let curFrame = 0;
 let gameMessage = '';
 let wordDifficulty = 'easy';
 let gameOver = false;
-// let maxGuesses;
-// let timer;
 
 /*---------- cached elements  ----------*/
 const imgEl = document.getElementById('spaceman-img');
 const btnEls = [...document.querySelectorAll('#ltr-buttons .btn')];
 const messageEl = document.getElementById('game-message');
 let wordDisplayEl = document.getElementById('word-display');
+let subWordDisplyEl = document.getElementById('sub-display');
+let resetBtn = document.getElementById('reset');
+let tryAgain = document.getElementById('try-again');
 let soundImg = document.querySelector('#sound');
 
 /*---------- event listeners ----------*/
@@ -74,59 +69,57 @@ document
   .getElementById('ltr-buttons')
   .addEventListener('click', handleBtnClick);
 document.getElementById('reset').addEventListener('click', init);
-document
-  .getElementById('home-menu')
-  .addEventListener('click', refreshPage);
+document.getElementById('try-again').addEventListener('click', init);
+document.getElementById('home-menu').addEventListener('click', refreshPage);
 document
   .querySelectorAll('.level-btn')
   .forEach((btn) => btn.addEventListener('click', selectWordDifficulty));
+document.getElementById('how-to-play-btn').addEventListener('click', howTo);
+document.getElementById('how-to-close').addEventListener('click', howToclose);
 soundImg.addEventListener('click', soundControl);
 
 /*---------- functions ----------*/
 init();
 
 function init() {
-  gameOver = false;
-  messageEl.style.color = '#333';
-  gameMessage = 'START!';
   hiddenWord = getRandomWord();
   displayWord = Array(hiddenWord.length).fill('_');
   guesses = [];
   correctGuesses = hiddenWord.split('');
   incorrectGuesses = [];
-  btnEls.forEach((btn) => {
-    btn.classList = 'btn';
-    btn.disabled = false;
-  });
+  gameMessage = 'START!';
   curFrame = 0;
+  gameOver = false;
+  tryAgain.style.display = 'none';
+  btnEls.forEach((btn) => {
+    btn.classList.remove('disabled');
+  });
+  resetBtn.style.display = 'flex';
+  subWordDisplyEl.textContent = '';
+  messageEl.style.color = '#333';
+
   render();
 }
 
 function render() {
-  imgEl.src = `assets/images/spaceman-${curFrame}.png`; // spaceman pic
+  imgEl.src = `assets/images/spaceman-${curFrame}.png`;
   wordDisplayEl.textContent = displayWord.join('');
   messageEl.textContent = gameMessage;
   btnEls.forEach((btn) => {
     const ltr = btn.textContent.toLowerCase();
-    btn.disabled = guesses.includes(ltr);
-  });
-  if (gameOver) {
-    btnEls.forEach((btn) => {
+    if (gameOver) {
       btn.disabled = true;
       btn.classList.add('disabled');
-    });
-  }
+    } else {
+      btn.disabled = guesses.includes(ltr);
+      btn.classList.remove('disabled');
+    }
+  });
 }
 
 function getRandomWord() {
   const wordList = words[wordDifficulty];
   return wordList[Math.floor(Math.random() * wordList.length)];
-}
-
-function getRandomWordSplit() {
-  const randomWord = getRandomWord();
-  const splitWord = randomWord.split('');
-  correctGuesses.push(splitWord);
 }
 
 function handleBtnClick(event) {
@@ -159,12 +152,18 @@ function handleBtnClick(event) {
   if (curFrame > 5) {
     gameOver = true;
     messageEl.style.color = 'red';
+    tryAgain.style.display = 'flex';
+    resetBtn.style.display = 'none';
     gameMessage = 'Game Over 😔';
+    subWordDisplyEl.textContent = 'The answer was..';
+    displayWord = hiddenWord.split('');
     gameLoseSound.volume = 0.5;
     gameLoseSound.play();
   } else if (displayWord.join('') === hiddenWord) {
     gameOver = true;
     messageEl.style.color = 'blue';
+    tryAgain.style.display = 'flex';
+    resetBtn.style.display = 'none';
     gameMessage = 'You Win 😎';
     gameWinSound.volume = 0.5;
     gameWinSound.play();
@@ -185,6 +184,14 @@ function refreshPage() {
   location.reload();
   bgmSound.loop = true;
   bgmSound.play();
+}
+
+function howTo() {
+  document.getElementById('how-to').style.display = 'flex';
+}
+
+function howToclose() {
+  document.getElementById('how-to').style.display = 'none';
 }
 
 function soundControl() {

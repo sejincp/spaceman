@@ -14,6 +14,23 @@ ul {
   list-style: none;
 }
 
+#root {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    #4fb576 0%,
+    #44c489 30%,
+    #28a9ae 46%,
+    #28a2b7 59%,
+    #4c7788 71%,
+    #6c4f63 86%,
+    #432c39 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientAnimation 4.5s linear infinite alterate;
+}
+
 /* Nav */
 nav {
   width: 100vw;
@@ -80,6 +97,43 @@ nav {
   background-color: #e3e7eb;
   position: fixed;
   z-index: 998;
+}
+
+/* How-to page */
+#how-to {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e3e7eb;
+  position: fixed;
+  z-index: 998;
+}
+
+#how-to-desc {
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#how-to-close {
+  height: 40px;
+  width: 120px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #fff;
+  background: #545f71;
+}
+
+#how-to-close:hover {
+  filter: brightness(0.9);
+  transition-duration: 0.3s;
 }
 
 /* Game display */
@@ -159,7 +213,6 @@ nav {
 }
 
 #reset {
-  height: 1.6rem;
   position: absolute;
   top: 12px;
   left: 12px;
@@ -172,21 +225,45 @@ nav {
   font-weight: 500;
 }
 
-#answer-display {
-  width: 200px;
-  height: 40px;
+#try-again {
+  border: none;
   display: flex;
+  background: transparent;
   align-items: center;
   justify-content: center;
   position: absolute;
+  cursor: pointer;
+  top: 164px;
   left: 0;
   right: 0;
+  margin: 0 auto;
+  filter: brightness(0.9);
+  transition-duration: 0.3s;
+}
+
+#answer-display {
+  width: 180px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
   bottom: 200px;
   margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+}
+
+#sub-display {
+  position: absolute;
+  font-size: 0.8rem;
+  top: -24px;
+}
+
+#word-display {
   text-transform: uppercase;
   letter-spacing: 5px;
-  background: white;
-  border-radius: 0;
 }
 
 /* Buttons */
