@@ -92,6 +92,7 @@ function init() {
   gameOver = false;
   tryAgain.style.display = 'none';
   btnEls.forEach((btn) => {
+    btn.classList = 'btn';
     btn.classList.remove('disabled');
   });
   resetBtn.style.display = 'flex';
@@ -149,7 +150,7 @@ function handleBtnClick(event) {
     curFrame++;
   }
 
-  if (curFrame > 5) {
+  if (curFrame > 6) {
     gameOver = true;
     messageEl.style.color = 'red';
     tryAgain.style.display = 'flex';

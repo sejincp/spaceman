@@ -1,4 +1,28 @@
-# Spaceman
+# <Spaceman>
+A description of your game. Background info of the game is a nice touch.
+
+# Screenshot
+
+<img src="url to your image on imgur" alt="acreenshot">
+<img src="url to your image on imgur" alt="acreenshot">
+
+# Technologies Used
+
+- JavaScript
+- HTML
+- CSS
+
+# Getting Started
+
+[Click to View Project Planning](your Trello url here)
+[Click to Play Connect Four!](your deployment url here)
+
+# Next Steps
+
+- Adding 30s timer
+
+
+
 
 - SE Bootcamp Project 1
 
@@ -6,13 +30,13 @@
 
 1. Start Game: Initialize the words and status
 
-2. Select Difficulty (optional)
+2. Select Difficulty
 
 - Difficulty: Easy / Word Length: 4 / Max incorrect guesses: 7
 
-- Difficulty: Medium / Word Length: 7 / Max incorrect guesses: 6
+- Difficulty: Medium / Word Length: 7 / Max incorrect guesses: 7
 
-- Difficulty: Hard / Word Length: 10 / Max incorrect guesses: 4
+- Difficulty: Hard / Word Length: 10 / Max incorrect guesses: 7
 
 3. Player Action
 
@@ -28,93 +52,16 @@
 - When player wins
 - When player click "Reset" to restart the game
 
-## Pseudocode
-
-### 1) Constants:
-
-1.1) ltr
-
-1.2) music (optional)
-
-### 2) State variables:
-
-2.1) hiddenWord
-
-2.2) displayWord
-
-2.3) correctGuesses
-
-2.4) incorrectGuesses
-
-2.5) maxGuesses
-
-2.6) gameOver
-
-2.7) timer (optional)
-
-2.8) Sounds (optional)
-
-### 3) Cached elements:
-
-3.1) letterEl (A to Z)
-
-3.2) buttons
-
-3.3) messages
-
-3.4) answerDisplay
-
-### 4) Functions
-
-4.1) gameReset (initialize and call render)
-
-4.2) renderWord
-
-4.3) renderMsg
-
-4.4) gameWin
-
-4.5) gameOver
-
-4.6) gameHint (optional)
-
-### 5) Event Listeners
-
-5.1) function handleClick
-
-## Data
-
-1. Words
-
-- Easy (4 letters) - Star, Wave, Moon
-
-- Medium (7 Letters) - Journey, Pyramid, Mystery, Station
-
-- Hard (10 Letters) - Laboratory, Electricity, Astronauts, Microscope
-
-2. Sounds (optional)
-
-- Game Start
-
-- Game Over
-
-- Game Win
-
-- Correct guesses
-
-- Incorrect guesses
-
-- Hint (optional)
-
-3. Images
-
-- Game Logo
-- Spaceman images
-
 ## Icebox
 
-- More Difficulty
+- Difficulty selection
+
+- How to play
+
+- 30s timer
 
 ## ETC
 
 [Figma link](https://www.figma.com/design/ighFkJCANyY1x0JPzX5Xo0/Project-1?node-id=1811-1036&t=kpK7Hj3v9LS2YU4w-1)
+
+
