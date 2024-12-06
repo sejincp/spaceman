@@ -139,13 +139,13 @@ function handleBtnClick(event) {
     correctGuesses.forEach((ltr, idx) => {
       if (ltr === ltrGuess) displayWord[idx] = ltr;
     });
-    correctSound.volume = 0.5;
+    correctSound.volume = 0.3;
     correctSound.play();
   } else {
     gameMessage = 'Try another one 🤔';
     btn.classList.add('incorrect-guess');
     incorrectGuesses.push(ltrGuess);
-    incorrectSound.volume = 0.5;
+    incorrectSound.volume = 0.3;
     incorrectSound.play();
     curFrame++;
   }
@@ -158,7 +158,7 @@ function handleBtnClick(event) {
     gameMessage = 'Game Over 😔';
     subWordDisplyEl.textContent = 'The answer was..';
     displayWord = hiddenWord.split('');
-    gameLoseSound.volume = 0.5;
+    gameLoseSound.volume = 0.3;
     gameLoseSound.play();
   } else if (displayWord.join('') === hiddenWord) {
     gameOver = true;
@@ -166,7 +166,7 @@ function handleBtnClick(event) {
     tryAgain.style.display = 'flex';
     resetBtn.style.display = 'none';
     gameMessage = 'You Win 😎';
-    gameWinSound.volume = 0.5;
+    gameWinSound.volume = 0.3;
     gameWinSound.play();
   }
   render();
@@ -176,7 +176,7 @@ function selectWordDifficulty(event) {
   if (!event.target.classList.contains('level-btn')) return;
   wordDifficulty = event.target.getAttribute('data-difficulty');
   document.getElementById('landing').style.display = 'none';
-  startSound.volume = 0.5;
+  startSound.volume = 0.3;
   startSound.play();
   init();
 }

@@ -1,10 +1,23 @@
-# <Spaceman>
-A description of your game. Background info of the game is a nice touch.
+# Spaceman
+
+A secret word is chosen, and blanks () are shown for each letter.
+
+Example: " _ _ _" for "STAR."
+
+You have 7 chances of wrong guesses.
+
+Take turns guessing one letter at a time. If correct, fill in the blanks.
+
+Guess all letters before running out of guesses.
+
+Hint: Words are space-related.
+
+Good luck, astronaut! 🚀
 
 # Screenshot
 
-<img src="url to your image on imgur" alt="acreenshot">
-<img src="url to your image on imgur" alt="acreenshot">
+<img src="https://i.ibb.co/XVHhybw/Screenshot-2024-12-06-at-6-26-16-AM.png" alt="screenshot">
+<img src="https://i.ibb.co/N7j7WJ1/Screenshot-2024-12-06-at-6-27-45-AM.png" alt="screenshot">
 
 # Technologies Used
 
@@ -14,54 +27,10 @@ A description of your game. Background info of the game is a nice touch.
 
 # Getting Started
 
-[Click to View Project Planning](your Trello url here)
-[Click to Play Connect Four!](your deployment url here)
+[Click to Play!](https://sejincp.github.io/spaceman/)
 
 # Next Steps
 
 - Adding 30s timer
 
-
-
-
-- SE Bootcamp Project 1
-
-## Game Flow
-
-1. Start Game: Initialize the words and status
-
-2. Select Difficulty
-
-- Difficulty: Easy / Word Length: 4 / Max incorrect guesses: 7
-
-- Difficulty: Medium / Word Length: 7 / Max incorrect guesses: 7
-
-- Difficulty: Hard / Word Length: 10 / Max incorrect guesses: 7
-
-3. Player Action
-
-- Player gains an incorrect number by choosing the wrong letter
-
-- Player gains an incorrect number by doing nothing for 30 seconds (optional)
-
-- Player gains one answer revealed by clicking the hint button (optional)
-
-4. Game Ends
-
-- Player reaches the max incorrect guess number
-- When player wins
-- When player click "Reset" to restart the game
-
-## Icebox
-
-- Difficulty selection
-
-- How to play
-
-- 30s timer
-
-## ETC
-
-[Figma link](https://www.figma.com/design/ighFkJCANyY1x0JPzX5Xo0/Project-1?node-id=1811-1036&t=kpK7Hj3v9LS2YU4w-1)
-
-
+- Custom images
